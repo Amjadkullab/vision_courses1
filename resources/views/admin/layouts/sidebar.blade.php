@@ -14,9 +14,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href={{route('admin.index')}}>
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>{{route('admin.index')}}</span></a>
+            <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->
@@ -43,12 +43,12 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-list-alt"></i>
             <span>Courses</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('Courses.create')}}">Add Course</a>
                 <a class="collapse-item" href="{{route('Courses.index')}}">All Course</a>
