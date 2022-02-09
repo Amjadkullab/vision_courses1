@@ -17,7 +17,7 @@ class CourseController extends Controller
     public function index()
     {
 
-        $courses=Course::latest('id')->paginate(5);
+        $courses=Course::latest()->paginate(5);
         return view('admin.courses.index',compact('courses'));
 
 
@@ -30,7 +30,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories= Category::all();
+        $categories= Category::select(['id', 'name'])->get();
         return view('admin.courses.create',compact('categories'));
     }
 
@@ -48,12 +48,12 @@ class CourseController extends Controller
         'price'=>'required',
         'content'=>'required',
         'image'=>'required|image',
-        'category'=>'required'
+        'category_id'=>'required'
     ]);
 
     $ex = $request->file('image')->getClientOriginalExtension();
-    $new_img_name = 'vision_courses_'.time().'.'.$ex;
-    $request->file('image')->move('public_path'('uploads'),$new_img_name);
+    $new_img_name = 'vision_courses_'. time() . '.' . $ex;
+    $request->file('image')->move(public_path('uploads'), $new_img_name);
 
     Course::create([
 
@@ -62,10 +62,10 @@ class CourseController extends Controller
      'price'=>$request->price,
      'content'=>$request->content,
      'image'=>$new_img_name,
-     'category'=>$request->category_name
+     'category_id'=>$request->category_id
     ]);
 
-    return redirect()->route('Courses.index')->with('success','Course Added Successfully');
+    return redirect()->route('courses.index')->with('success','Course Added Successfully');
 
 
 
@@ -92,7 +92,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('admin.courses.edit',compact('course'));
+        $categories= Category::select(['id', 'name'])->get();
+        return view('admin.courses.edit',compact('course','categories'));
     }
 
     /**
@@ -110,24 +111,25 @@ class CourseController extends Controller
             'price'=>'required',
             'content'=>'required',
             'image'=>'required|image',
-            'category'=>'required'
-
-        ]);
-        $ex = $request->file('image')->getClientOriginalExtension();
-    $new_img_name = 'vision_courses_'.time().'.'.$ex;
-    $request->file('image')->move('public_path'('uploads'),$new_img_name);
-
+            'category_id'=>'required'
+]);
+$new_img_name = $course->image;
+if($request->has('image')){
+    $ex = $request->file('image')->getClientOriginalExtension();
+    $new_img_name = 'vision_courses_' . time() . '.' . $ex;
+    $request->file('image')->move(public_path('uploads'), $new_img_name);
+}
     $course->update([
         'name'=> $request->name,
         'price'=> $request->price,
         'slug'=>Str::slug($request->name),
         'content'=>$request->content,
         'image'=>$new_img_name,
-        'category'=>$request->category_name
+        'category_id' => $request->category_id
 
     ]);
 
-    return redirect()->route('Courses.index')->with('success','Course Updated Successfully');
+    return redirect()->route('courses.index')->with('success','Course Updated Successfully');
 
 
     }
@@ -141,7 +143,8 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        return redirect()->route('Courses.index')->with('success','Course Deleted Successfully');
+        return redirect()->route('courses.index')
+            ->with('success','Course Deleted Successfully');
 
     }
 }

@@ -27,12 +27,12 @@
 <td>{{$course->name}}</td>
 <td>{{$course->price}}</td>
 <td>{{$course->content}}</td>
-<td>{{$course->image}}</td>
-<td>{{$course->category_name }}</td>
-<td>{{$course->created_at->format('d-m-y')}}</td>
+<td><img width="100" src="{{asset('uploads/' .  $course->image)}}" alt=""></td>
+<td>{{$course->Category_id }}</td>
+<td>{{$course->created_at->format('d - m - y')}}</td>
 <td>
-<a class="btn btn-sm btn-primary" href="{{route('Courses.edit',$course->id)}}"><i class="fas fa-edit"></i></a>
-<form class="d-inline" action="{{route('Courses.destroy',$course->id)}}" method="POST">
+<a class="btn btn-sm btn-primary" href="{{route('courses.edit',$course->id)}}"><i class="fas fa-edit"></i></a>
+<form class="d-inline" action="{{route('courses.destroy',$course->id)}}" method="POST">
 @csrf
 @method('DELETE')
 <button onclick="return confirm('are you sure?')" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>

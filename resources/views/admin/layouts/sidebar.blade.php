@@ -36,8 +36,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('Categories.create')}}">Add Category</a>
-                <a class="collapse-item" href="{{route('Categories.index')}}">All Category</a>
+                <a class="collapse-item" href="{{route('categories.create')}}">Add Category</a>
+                <a class="collapse-item" href="{{route('categories.index')}}">All Category</a>
             </div>
         </div>
     </li>
@@ -50,8 +50,8 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('Courses.create')}}">Add Course</a>
-                <a class="collapse-item" href="{{route('Courses.index')}}">All Course</a>
+                <a class="collapse-item" href="{{route('courses.create')}}">Add Course</a>
+                <a class="collapse-item" href="{{route('courses.index')}}">All Course</a>
                 <a class="collapse-item" href="">Registration</a>
             </div>
         </div>
