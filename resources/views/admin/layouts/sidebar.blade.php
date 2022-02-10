@@ -52,7 +52,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('courses.create')}}">Add Course</a>
                 <a class="collapse-item" href="{{route('courses.index')}}">All Course</a>
-                <a class="collapse-item" href="">Registration</a>
+                <a class="collapse-item" href="{{route('registrations')}}">Registration</a>
             </div>
         </div>
     </li>

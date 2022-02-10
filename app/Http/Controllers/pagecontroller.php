@@ -25,6 +25,19 @@ public function course($slug){
 
 
 }
+
+public function search(Request $request){
+
+$course= Course::where('name','like', '%'. $request->s .'%')->orwhere('content','like','%'.$request->s.'%')->get();
+return view('front.index',compact('course'));
+
+
+
+}
+
+
+
+
 public function register($slug){
 
     $course= Course::where('slug',$slug)->first();
@@ -47,7 +60,7 @@ public function registersubmit(Request $request,$slug){
     $user= User::where('email',$request->email)->first();
     if(is_null($user)){
 
-        User::create([
+     $user=User::create([
         'name'=> $request->name,
         'email'=> $request->email,
         'mobile'=> $request->mobile,
@@ -56,8 +69,8 @@ public function registersubmit(Request $request,$slug){
     }
        $register=Registration::create([
 
-            'user_id'=>$user->id,
-            'course_id'=> $course->id,
+            'user_id' => $user->id,
+            'course_id' => $course->id,
 
         ]);
         return redirect()->route('pay',$register->id);}

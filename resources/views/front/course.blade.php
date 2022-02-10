@@ -26,7 +26,7 @@
             <h3>{{$course->name}}</h3>
             <h4>Price: {{$course->price}}</h4>
             <p>{{$course->content}}</p>
-            <a class="btn btn-dark px-5" href="{{route('register',$course->slug)}}">Register</a>
+            <a class="btn btn-dark px-5" href="{{ route('register', $course->slug)}}">Register</a>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Category;
 use Illuminate\Support\Str;
+use App\Models\Registration;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -147,4 +148,26 @@ if($request->has('image')){
             ->with('success','Course Deleted Successfully');
 
     }
+
+public function registrations(){
+$data= Registration::paginate(5);
+return view('admin.courses.registration',compact('data'));
+
+}
+public function registrationsDelete($id){
+
+    Registration::find($id)->delete();
+    return redirect()->route('registrations')->with('success','Registrations Deleted Successfully');
+
+
+}
+
+
+
+
+
+
+
+
+
 }

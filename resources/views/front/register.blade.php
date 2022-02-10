@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col">
             <ol class="list-unstyled d-flex">
-              <li><a href="{{route('homepage')}}">Home</a></li>
+              <li><a href="https://bakkah.com">Home</a></li>
               <li class="mx-4">Register on {{$course->name}}</li>
             </ol>
             <h1>Register on {{$course->name}}</h1>

@@ -4,8 +4,9 @@
     <section class="hero">
       <div class="content">
         <h1 class="mb-4 mt-0">We are the top one in the Market</h1>
-        <form action="">
-          <input type="text" placeholder="Course name.." class="form-control form-control-lg">
+        <form action="{{route('search')}}" method="POST">
+            @csrf
+          <input type="text" name="s" placeholder="Course name.." class="form-control form-control-lg">
         </form>
       </div>
     </section>
@@ -26,7 +27,7 @@
                     <p class="card-text">@php
                         echo SubStr($course->content,0,10).'.......';
                     @endphp</p>
-                    <a href="{{route('course/',$course->slug)}}" class="btn btn-dark w-100">Read More</a>
+                    <a href="{{route('course',$course->slug)}}" class="btn btn-dark w-100">Read More</a>
                   </div>
                 </div>
               </div>
